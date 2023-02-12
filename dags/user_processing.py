@@ -1,5 +1,5 @@
+import datetime as dt
 import json
-from datetime import datetime
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -36,7 +36,7 @@ def _store_user():
 
 with DAG(
     "user_processing",
-    start_date=datetime(2022, 1, 1),
+    start_date=dt.datetime(2022, 1, 1),
     schedule_interval="@daily",
     catchup=False,
 ) as dag:

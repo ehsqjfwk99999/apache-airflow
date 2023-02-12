@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime as dt
 
 from airflow import DAG, Dataset
 from airflow.decorators import task
@@ -9,7 +9,7 @@ my_file_2 = Dataset("/tmp/my_file_2.txt")
 with DAG(
     dag_id="pc_producer",
     schedule="@daily",
-    start_date=datetime(2023, 1, 1),
+    start_date=dt.datetime(2023, 1, 1),
     catchup=False,
 ):
 
@@ -29,7 +29,7 @@ with DAG(
 with DAG(
     dag_id="pc_consumer",
     schedule=[my_file, my_file_2],
-    start_date=datetime(2023, 1, 1),
+    start_date=dt.datetime(2023, 1, 1),
     catchup=False,
 ):
 
