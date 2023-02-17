@@ -3,7 +3,8 @@ import datetime as dt
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-# https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html
+# PythonOperator: https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/operators/python/index.html
+# Template: https://airflow.apache.org/docs/apache-airflow/stable/templates-ref.html
 
 # passed like (conf=..., dag=...) to **context
 def _show_context_variables(**context):
@@ -32,9 +33,9 @@ def _pass_by_template_dict(**context):
 
 
 with DAG(
-    "dag_pythonoperator",
+    "dag_operator_python",
     start_date=dt.datetime(2023, 1, 1),
-    schedule_interval="* * * * *",
+    schedule_interval=None,
     catchup=False,
 ) as dag:
 
